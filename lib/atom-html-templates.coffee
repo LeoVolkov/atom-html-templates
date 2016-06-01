@@ -91,7 +91,7 @@ module.exports = AtomHtmlTemplates =
                                    #{@defaultStyles}
                                </head>
 
-                               <body epub:type="TYPE">
+                               <body epub:type="TIPO">
 
                                </body>
 
