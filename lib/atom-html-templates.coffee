@@ -11,7 +11,6 @@ module.exports = AtomHtmlTemplates =
         # @modalPanel = atom.workspace.addModalPanel(item: @atomHtmlTemplatesView.getElement(), visible: false)
 
         @defaultHTML = """
-                               <html lang="es">
 
                                <head>
                                    <meta charset="UTF-8">
@@ -79,6 +78,7 @@ module.exports = AtomHtmlTemplates =
             if valueArr[0] == "html5"
                 @templateForm = """
                                 <!DOCTYPE html>
+                                <html lang="es">
                                 #{@defaultHTML}
                                 """
             else if valueArr[0] == "epub"
