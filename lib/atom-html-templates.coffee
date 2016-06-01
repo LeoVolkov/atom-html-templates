@@ -61,21 +61,20 @@ module.exports = AtomHtmlTemplates =
               <html lang="es">
 
               <head>
-                <meta charset ="utf-8">
-                <title>Título</title>
-                <meta name = "description" content="Descripción">
-
-                #{@returnAdd(@additionalStyles)}
-                #{@defaultStyles}
-
-                <!-- Para compatibilidad con Internet Explorer 9 -->
-                <!--[if lt IE 9]>
-                <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-                <![endif]-->
+                  <meta charset="UTF-8">
+                  <title>Título</title>
+                  <meta name="description" content="Descripción">
+                  <link rel="stylesheet" href="RUTA">
+                  #{@returnAdd(@additionalStyles)}
+                  #{@defaultStyles}
+                  <!-- Para compatibilidad con Internet Explorer 9 -->
+                  <!--[if lt IE 9]>
+                    <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+                  <![endif]-->
               </head>
 
               <body>
-                #{@returnAdd(@additionalJs)}
+              #{@returnAdd(@additionalJs)}
 
               </body>
 
