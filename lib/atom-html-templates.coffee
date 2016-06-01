@@ -4,14 +4,14 @@ module.exports = AtomHtmlTemplates =
     subscriptions: null
 
     activate: (state) ->
-        @templateForm=""
-        @additionalStyles=[]
+        @templateForm = ""
+        @additionalStyles = []
         @additionalJs = []
-        @defaultStyles = '<link rel = "stylesheet" href="PATH">'
+        @defaultStyles = '<link rel="stylesheet" href="PATH">'
         @defaultCharset = '<meta charset="UTF-8">'
-        @defaultTitle = '<title>Título</title>'
-        @defaultDescription = '<meta name="description" content="Descripción">'
-        @defaultLanguage = 'es'
+        @defaultTitle = '<title>TITLE</title>'
+        @defaultDescription = '<meta name="description" content="DESCRIPTION">'
+        @defaultLanguage = 'en'
         # @modalPanel = atom.workspace.addModalPanel(item: @atomHtmlTemplatesView.getElement(), visible: false)
 
         # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
@@ -49,7 +49,6 @@ module.exports = AtomHtmlTemplates =
                 scripts +=array[i]
         return scripts
 
-
     toggle: ->
         defaultGrammarScopeName = "text.html.basic"
         if editor=atom.workspace.getActiveTextEditor()
@@ -63,6 +62,7 @@ module.exports = AtomHtmlTemplates =
                 @templateForm = """
                                 <!DOCTYPE html>
                                 <html lang="#{@defaultLanguage}">
+
                                 <head>
                                     #{@defaultCharset}
                                     #{@defaultTitle}
@@ -84,6 +84,7 @@ module.exports = AtomHtmlTemplates =
                 @templateForm= """
                                <?xml version="1.0" encoding="UTF-8"?>
                                <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="#{@defaultLanguage}" lang="#{@defaultLanguage}">
+
                                <head>
                                    #{@defaultCharset}
                                    #{@defaultTitle}
@@ -101,3 +102,7 @@ module.exports = AtomHtmlTemplates =
 
         editor.setText(@templateForm)
         editor.setGrammar(atom.grammars.grammarForScopeName(defaultGrammarScopeName))
+
+        # Refresh
+        @additionalStyles = []
+        @additionalJs = []
