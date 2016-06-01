@@ -10,6 +10,27 @@ module.exports = AtomHtmlTemplates =
         @defaultStyles = '<link rel = "stylesheet" href="RUTA">'
         # @modalPanel = atom.workspace.addModalPanel(item: @atomHtmlTemplatesView.getElement(), visible: false)
 
+        @defaultHTML = """
+                               <html lang="es">
+
+                               <head>
+                                   <meta charset="UTF-8">
+                                   <title>Título</title>
+                                   <meta name="description" content="Descripción">
+                                   #{@defaultStyles}
+                                   #{@returnAdd(@additionalStyles)}
+                                   <!-- Para compatibilidad con Internet Explorer 9 -->
+                                   <!--[if lt IE 9]>
+                                     <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+                                   <![endif]-->
+                               </head>
+
+                               <body>
+                               #{@returnAdd(@additionalJs)}
+                               </body>
+
+                               </html>
+                       """
         # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
         @subscriptions = new CompositeDisposable
 
@@ -58,28 +79,14 @@ module.exports = AtomHtmlTemplates =
             if valueArr[0] == "html5"
                 @templateForm = """
                                 <!DOCTYPE html>
-                                <html lang="es">
-
-                                <head>
-                                    <meta charset="UTF-8">
-                                    <title>Título</title>
-                                    <meta name="description" content="Descripción">
-                                    #{@defaultStyles}
-                                    #{@returnAdd(@additionalStyles)}
-                                    <!-- Para compatibilidad con Internet Explorer 9 -->
-                                    <!--[if lt IE 9]>
-                                      <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-                                    <![endif]-->
-                                </head>
-
-                                <body>
-                                #{@returnAdd(@additionalJs)}
-                                </body>
-
-                                </html>
+                                #{@defaultHTML}
                                 """
-            else if valueArr[0] == "xhtml"
-                @templateForm="XHTML"
+            else if valueArr[0] == "epub"
+                @templateForm= """
+                               <?xml version="1.0" encoding="UTF-8"?>
+                               <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="es" lang="es">
+                               #{@defaultHTML}
+                                """
             else
                 @templateForm="No existe tal opción."
 
