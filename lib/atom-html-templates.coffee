@@ -36,7 +36,7 @@ module.exports = AtomHtmlTemplates =
         @additionalStyles[indeksS++]= '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">'
       else if array[i] == 'mdi'
         @additionalStyles[indeksS++]= '<link rel="stylesheet" href="https://cdn.materialdesignicons.com/1.4.57/css/materialdesignicons.min.css">'
-  
+
   returnAdd: (array) ->
     scripts = " "
     for i in [0...array.length] by 1
@@ -57,30 +57,32 @@ module.exports = AtomHtmlTemplates =
        console.log(@additionalStyles)
        if valueArr[0] == "html5"
            @templateForm = """
-              <!doctype html>
-              <html lang="en">
+              <!DOCTYPE html>
+              <html lang="es">
+
               <head>
                 <meta charset ="utf-8">
-
-                <title>Title of your project</title>
-                <meta name = "description" content="The HTML5 Herald">
-                <meta name = "author" content="SitePoint">
+                <title>Título</title>
+                <meta name = "description" content="Descripción">
 
                 #{@returnAdd(@additionalStyles)}
                 #{@defaultStyles}
 
+                <!-- Para compatibilidad con Internet Explorer 9 -->
                 <!--[if lt IE 9]>
                 <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
                 <![endif]-->
               </head>
+
               <body>
                 #{@returnAdd(@additionalJs)}
-                <script src = "js/scripts.js"></script>
+
               </body>
+
               </html>
               """
        else
-        @templateForm="nie ma takiej opcji"
+        @templateForm="No existe tal opción."
 
     editor.setText(@templateForm)
     editor.setGrammar(atom.grammars.grammarForScopeName(defaultGrammarScopeName))
