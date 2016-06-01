@@ -7,10 +7,10 @@ module.exports = AtomHtmlTemplates =
         @templateForm = ""
         @additionalStyles = []
         @additionalJs = []
-        @defaultStyles = '<link rel="stylesheet" href="PATH">'
+        @defaultStyles = '<link rel="stylesheet" href="RUTA">'
         @defaultCharset = '<meta charset="UTF-8">'
-        @defaultTitle = '<title>TITLE</title>'
-        @defaultDescription = '<meta name="description" content="DESCRIPTION">'
+        @defaultTitle = '<title>TÍTULO</title>'
+        @defaultDescription = '<meta name="description" content="DESCRIPCIÓN">'
         @defaultLanguage = 'en'
         # @modalPanel = atom.workspace.addModalPanel(item: @atomHtmlTemplatesView.getElement(), visible: false)
 
@@ -98,7 +98,7 @@ module.exports = AtomHtmlTemplates =
                                </html>
                                 """
             else
-                @templateForm="There is no such option."
+                @templateForm="No existe esa opción."
 
         editor.setText(@templateForm)
         editor.setGrammar(atom.grammars.grammarForScopeName(defaultGrammarScopeName))
