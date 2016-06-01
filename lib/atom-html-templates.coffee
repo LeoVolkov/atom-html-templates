@@ -7,7 +7,7 @@ module.exports = AtomHtmlTemplates =
     @templateForm=""
     @additionalStyles=[]
     @additionalJs = []
-    @defaultStyles = '<link rel = "stylesheet" href="css/styles.css?v=1.0">'
+    @defaultStyles = '<link rel = "stylesheet" href="RUTA">'
     # @modalPanel = atom.workspace.addModalPanel(item: @atomHtmlTemplatesView.getElement(), visible: false)
 
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
@@ -64,7 +64,6 @@ module.exports = AtomHtmlTemplates =
                   <meta charset="UTF-8">
                   <title>Título</title>
                   <meta name="description" content="Descripción">
-                  <link rel="stylesheet" href="RUTA">
                   #{@returnAdd(@additionalStyles)}
                   #{@defaultStyles}
                   <!-- Para compatibilidad con Internet Explorer 9 -->
@@ -75,7 +74,6 @@ module.exports = AtomHtmlTemplates =
 
               <body>
               #{@returnAdd(@additionalJs)}
-
               </body>
 
               </html>
