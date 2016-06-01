@@ -11,7 +11,7 @@ module.exports = AtomHtmlTemplates =
         @defaultCharset = '<meta charset="UTF-8">'
         @defaultTitle = '<title>TÍTULO</title>'
         @defaultDescription = '<meta name="description" content="DESCRIPCIÓN">'
-        @defaultLanguage = 'en'
+        @defaultLanguage = 'es'
         # @modalPanel = atom.workspace.addModalPanel(item: @atomHtmlTemplatesView.getElement(), visible: false)
 
         # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable

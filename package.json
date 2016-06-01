@@ -1,8 +1,8 @@
 {
-  "name": "atom-html-templates en español",
+  "name": "atom-html-templates",
   "main": "./lib/atom-html-templates",
   "version": "0.1.0",
-  "description": "Una simple extensión para generar plantillas HTML5, con opción de algunas dependencias, o para EPUB.",
+  "description": "Una simple extensión para generar plantillas HTML5, con opción de algunas dependencias, o xhtml para EPUB.",
   "keywords": [],
   "activationCommands": {
     "atom-workspace": "atom-html-templates:toggle"
