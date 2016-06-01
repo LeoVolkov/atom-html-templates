@@ -7,29 +7,13 @@ module.exports = AtomHtmlTemplates =
         @templateForm=""
         @additionalStyles=[]
         @additionalJs = []
-        @defaultStyles = '<link rel = "stylesheet" href="RUTA">'
+        @defaultStyles = '<link rel = "stylesheet" href="PATH">'
+        @defaultCharset = '<meta charset="UTF-8">'
+        @defaultTitle = '<title>Título</title>'
+        @defaultDescription = '<meta name="description" content="Descripción">'
+        @defaultLanguage = 'es'
         # @modalPanel = atom.workspace.addModalPanel(item: @atomHtmlTemplatesView.getElement(), visible: false)
 
-        @defaultHTML = """
-
-                               <head>
-                                   <meta charset="UTF-8">
-                                   <title>Título</title>
-                                   <meta name="description" content="Descripción">
-                                   #{@defaultStyles}
-                                   #{@returnAdd(@additionalStyles)}
-                                   <!-- Para compatibilidad con Internet Explorer 9 -->
-                                   <!--[if lt IE 9]>
-                                     <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-                                   <![endif]-->
-                               </head>
-
-                               <body>
-                               #{@returnAdd(@additionalJs)}
-                               </body>
-
-                               </html>
-                       """
         # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
         @subscriptions = new CompositeDisposable
 
@@ -78,17 +62,42 @@ module.exports = AtomHtmlTemplates =
             if valueArr[0] == "html5"
                 @templateForm = """
                                 <!DOCTYPE html>
-                                <html lang="es">
-                                #{@defaultHTML}
+                                <html lang="#{@defaultLanguage}">
+                                <head>
+                                    #{@defaultCharset}
+                                    #{@defaultTitle}
+                                    #{@defaultDescription}
+                                    #{@defaultStyles}
+                                    #{@returnAdd(@additionalStyles)}
+                                    <!--[if lt IE 9]>
+                                      <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+                                    <![endif]-->
+                                </head>
+
+                                <body>
+                                #{@returnAdd(@additionalJs)}
+                                </body>
+
+                                </html>
                                 """
             else if valueArr[0] == "epub"
                 @templateForm= """
                                <?xml version="1.0" encoding="UTF-8"?>
-                               <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="es" lang="es">
-                               #{@defaultHTML}
+                               <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="#{@defaultLanguage}" lang="#{@defaultLanguage}">
+                               <head>
+                                   #{@defaultCharset}
+                                   #{@defaultTitle}
+                                   #{@defaultStyles}
+                               </head>
+
+                               <body epub:type="TYPE">
+
+                               </body>
+
+                               </html>
                                 """
             else
-                @templateForm="No existe tal opción."
+                @templateForm="There is no such option."
 
         editor.setText(@templateForm)
         editor.setGrammar(atom.grammars.grammarForScopeName(defaultGrammarScopeName))
